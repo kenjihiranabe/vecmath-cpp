@@ -159,8 +159,6 @@ public:
     }
 };
 
-VM_END_NS
-
 template <class T>
 inline
 VM_VECMATH_NS::Vector3<T> operator*(T s, const VM_VECMATH_NS::Vector3<T>& t1) {
@@ -174,8 +172,6 @@ std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::Vector3<T>& t1) {
     return operator<<(o, (const VM_VECMATH_NS::Tuple3<T>&)t1);
 }
 #endif
-
-VM_BEGIN_NS
 
 typedef Vector3<double> Vector3d;
 typedef Vector3<float> Vector3f;

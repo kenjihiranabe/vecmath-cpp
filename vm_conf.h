@@ -24,13 +24,13 @@
 /*
  * can do 'cout << vec;'
  */
-//#define VM_INCLUDE_IO
+#define VM_INCLUDE_IO
 
 /*
  * can do 'vec.toString();'
  * automatically defines VM_INCLUDE_IO
  */
-//#define VM_INCLUDE_TOSTRING
+#define VM_INCLUDE_TOSTRING
 
 /*
  * places this library in 'kh_vecmath' namespace

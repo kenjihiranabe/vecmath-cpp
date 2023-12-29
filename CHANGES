@@ -1,5 +1,13 @@
 HISTOR OF CHANGES:
 
+* 2023/12/29
+
+First checkin into github.
+Recompiled and tested in MacOS 14.1.1 Sonoma.
+Updated for the new C++17 standard.
+Omited the old MSVC project files.
+Omited the copyright notice from the source files.
+
 * 1.2-1.5
 
 ** Matrix[34].h use std::endl instead of endl in toString() methods.

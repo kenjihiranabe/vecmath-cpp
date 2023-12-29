@@ -526,7 +526,6 @@ public:
 
 };
 
-VM_END_NS
 
 template <class T>
 inline
@@ -542,12 +541,11 @@ std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::Tuple4<T>& t1) {
 }
 #endif
 
-VM_BEGIN_NS
-
 typedef Tuple4<double> Tuple4d;
 typedef Tuple4<float> Tuple4f;
 
 VM_END_NS
+
 
 
 #endif /* TUPLE4_H */

@@ -174,8 +174,6 @@ public:
     }
 };
 
-VM_END_NS
-
 template <class T>
 inline
 VM_VECMATH_NS::Vector4<T> operator*(T s, const VM_VECMATH_NS::Vector4<T>& t1) {
@@ -190,7 +188,6 @@ std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::Vector4<T>& t1) {
 }
 #endif
 
-VM_BEGIN_NS
 
 typedef Vector4<double> Vector4d;
 typedef Vector4<float> Vector4f;

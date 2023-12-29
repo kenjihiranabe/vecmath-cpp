@@ -1,19 +1,3 @@
-/*
-   Copyright (C) 1997,1998,1999
-   Kenji Hiranabe, Eiwa System Management, Inc.
-
-   This program is free software.
-   Implemented by Kenji Hiranabe(hiranabe@esm.co.jp),
-   conforming to the Java(TM) 3D API specification by Sun Microsystems.
-
-   Permission to use, copy, modify, distribute and sell this software
-   and its documentation for any purpose is hereby granted without fee,
-   provided that the above copyright notice appear in all copies and
-   that both that copyright notice and this permission notice appear
-   in supporting documentation. Kenji Hiranabe and Eiwa System Management,Inc.
-   makes no representations about the suitability of this software for any
-   purpose.  It is provided "AS IS" with NO WARRANTY.
-*/
 #ifndef POINT2_H
 #define POINT2_H
 
@@ -116,8 +100,6 @@ public:
     }
 };
 
-VM_END_NS
-
 #ifdef VM_INCLUDE_IO
 template <class T>
 inline
@@ -125,8 +107,6 @@ std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::Point2<T>& t1) {
     return operator<<(o, (const VM_VECMATH_NS::Tuple2<T>&)t1);
 }
 #endif
-
-VM_BEGIN_NS
 
 typedef Point2<double> Point2d;
 typedef Point2<float> Point2f;

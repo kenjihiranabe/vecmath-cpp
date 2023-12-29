@@ -1,19 +1,3 @@
-/*
-   Copyright (C) 1997,1998,1999
-   Kenji Hiranabe, Eiwa System Management, Inc.
-
-   This program is free software.
-   Implemented by Kenji Hiranabe(hiranabe@esm.co.jp),
-   conforming to the Java(TM) 3D API specification by Sun Microsystems.
-
-   Permission to use, copy, modify, distribute and sell this software
-   and its documentation for any purpose is hereby granted without fee,
-   provided that the above copyright notice appear in all copies and
-   that both that copyright notice and this permission notice appear
-   in supporting documentation. Kenji Hiranabe and Eiwa System Management,Inc.
-   makes no representations about the suitability of this software for any
-   purpose.  It is provided "AS IS" with NO WARRANTY.
-*/
 #ifndef MATRIX3__H
 #define MATRIX3__H
 
@@ -779,14 +763,12 @@ Point3<T> operator*(const Matrix3<T>& m, const Point3<T>& t) {
     return operator*(m, (const Tuple3<T>&)t);
 }
 
-VM_END_NS
 
 #ifdef VM_INCLUDE_IO
 template <class T>
 std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::Matrix3<T>& t1);
 #endif
 
-VM_BEGIN_NS
 
 typedef Matrix3<double> Matrix3d;
 typedef Matrix3<float> Matrix3f;

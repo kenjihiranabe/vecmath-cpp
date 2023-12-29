@@ -143,8 +143,6 @@ public:
  * removed construction from Vector2f
  */
 
-VM_END_NS
-
 template <class T>
 inline
 VM_VECMATH_NS::Vector2<T> operator*(T s, const VM_VECMATH_NS::Vector2<T>& t1) {
@@ -159,7 +157,6 @@ std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::Vector2<T>& t1) {
 }
 #endif
 
-VM_BEGIN_NS
 
 typedef Vector2<double> Vector2d;
 typedef Vector2<float> Vector2f;

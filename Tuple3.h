@@ -491,8 +491,6 @@ public:
 
 };
 
-VM_END_NS
-
 #ifdef VM_INCLUDE_IO
 template <class T>
 std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::Tuple3<T>& t1) {
@@ -505,8 +503,6 @@ inline
 VM_VECMATH_NS::Tuple3<T> operator*(T s, const VM_VECMATH_NS::Tuple3<T>& t1) {
     return (VM_VECMATH_NS::Tuple3<T>(t1)).operator*=(s);
 }
-
-VM_BEGIN_NS
 
 typedef Tuple3<double> Tuple3d;
 typedef Tuple3<float> Tuple3f;

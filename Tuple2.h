@@ -463,7 +463,6 @@ std::string toString() const {
     }
 };
 
-VM_END_NS
 
 template <class T>
 inline
@@ -478,7 +477,6 @@ std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::Tuple2<T>& t1) {
 }
 #endif
 
-VM_BEGIN_NS
 
 typedef Tuple2<double> Tuple2d;
 typedef Tuple2<float> Tuple2f;

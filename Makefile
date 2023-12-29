@@ -1,17 +1,6 @@
-#######################################################################
-#
-#              FILENAME  : makefile
-#
-#              $Author: hiranabe $
-#              $Date: 1999/10/22 08:34:30 $
-#              $Revision: 1.4 $
-#
-#######################################################################
-
-VERSION = 1.2-1.4
 ROOT = vecmath-c++-$(VERSION)
 
-CCFLAGS = -g -Wall -I. -I/usr/local/CppUnit/test/framework
+CCFLAGS = -g -Wall -I.
 CCC = g++
 #CCC = /usr/egcs-1.1.2/bin/g++
 #CCC = /usr/gnu/bin/g++

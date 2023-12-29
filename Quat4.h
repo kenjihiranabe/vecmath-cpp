@@ -1,19 +1,3 @@
-/*
-   Copyright (C) 1997,1998,1999
-   Kenji Hiranabe, Eiwa System Management, Inc.
-
-   This program is free software.
-   Implemented by Kenji Hiranabe(hiranabe@esm.co.jp),
-   conforming to the Java(TM) 3D API specification by Sun Microsystems.
-
-   Permission to use, copy, modify, distribute and sell this software
-   and its documentation for any purpose is hereby granted without fee,
-   provided that the above copyright notice appear in all copies and
-   that both that copyright notice and this permission notice appear
-   in supporting documentation. Kenji Hiranabe and Eiwa System Management,Inc.
-   makes no representations about the suitability of this software for any
-   purpose.  It is provided "AS IS" with NO WARRANTY.
-*/
 #ifndef QUAT4_H
 #define QUAT4_H
 
@@ -208,7 +192,6 @@ Quat4<T> Quat4<T>::operator*(const Quat4& m1) const {
     return (Quat4(*this)).operator*=(m1);
 }
 
-VM_END_NS
 
 #ifdef VM_INCLUDE_IO
 template <class T>
@@ -217,5 +200,7 @@ std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::Quat4<T>& q1) {
     return operator<<(o, (const VM_VECMATH_NS::Tuple4<T>&)q1);
 }
 #endif
+
+VM_END_NS
 
 #endif /* QUAT4_H */
