@@ -138,6 +138,48 @@ void Vector3Test(T) {
 }
 
 template<class T>
+void Mat3QuatAxisAngle(AxisAngle4<T>& a1) {
+	Matrix3<T> m1 = Matrix3<T>();
+	Matrix3<T> m2 = Matrix3<T>();
+	AxisAngle4<T> a2 = AxisAngle4<T>();
+	Quat4<T> q1 = Quat4<T>();
+	Quat4<T> q2 = Quat4<T>();
+
+	// Axis <-> Quat
+	q1.set(a1);
+	a2.set(q1);
+	// a1.v parallels to a2.v 
+	assert(equals(a1, a2));
+	q2 = Quat4<T>();
+	q2.set(a2);
+	assert(equals(q1, q2));
+
+	// Quat <-> Mat
+	q1.set(a1);
+	m1.set(q1);
+	q2.set(m1);
+	assert(equals(q1, q2));
+	m2.set(q2);
+	assert(equals(m1, m2));
+
+	// Mat <-> AxisAngle
+	m1.set(a1);
+	a2.set(m1);
+	//printf("a1="+a1);
+	//printf("a2="+a2);
+	//printf("m1="+m1);
+	assert(equals(a1, a2));
+	m2.set(a1);
+	assert(equals(m1, m2));
+	a1.x *= 2; a1.y *= 2; a1.z *= 2;
+	m2.set(a1);
+	a1.x = -a1.x; a1.y = -a1.y; a1.z = -a1.z; a1.angle = -a1.angle;
+	m2.set(a1);
+	assert(equals(m1, m2));
+
+}
+
+template<class T>
 void Matrix3Test(T) {
 	Matrix3<T> O = Matrix3<T>();
 	Matrix3<T> I = Matrix3<T>(); I.setIdentity();
@@ -322,48 +364,6 @@ void Mat4QuatAxisAngle(AxisAngle4<T>& a1) {
 	assert(equals(m1, m2));
 }
 
-
-template<class T>
-void Mat3QuatAxisAngle(AxisAngle4<T>& a1) {
-	Matrix3<T> m1 = Matrix3<T>();
-	Matrix3<T> m2 = Matrix3<T>();
-	AxisAngle4<T> a2 = AxisAngle4<T>();
-	Quat4<T> q1 = Quat4<T>();
-	Quat4<T> q2 = Quat4<T>();
-
-	// Axis <-> Quat
-	q1.set(a1);
-	a2.set(q1);
-	// a1.v parallels to a2.v 
-	assert(equals(a1, a2));
-	q2 = Quat4<T>();
-	q2.set(a2);
-	assert(equals(q1, q2));
-
-	// Quat <-> Mat
-	q1.set(a1);
-	m1.set(q1);
-	q2.set(m1);
-	assert(equals(q1, q2));
-	m2.set(q2);
-	assert(equals(m1, m2));
-
-	// Mat <-> AxisAngle
-	m1.set(a1);
-	a2.set(m1);
-	//printf("a1="+a1);
-	//printf("a2="+a2);
-	//printf("m1="+m1);
-	assert(equals(a1, a2));
-	m2.set(a1);
-	assert(equals(m1, m2));
-	a1.x *= 2; a1.y *= 2; a1.z *= 2;
-	m2.set(a1);
-	a1.x = -a1.x; a1.y = -a1.y; a1.z = -a1.z; a1.angle = -a1.angle;
-	m2.set(a1);
-	assert(equals(m1, m2));
-
-}
 
 template <class T>
 void Matrix4Test(T) {

@@ -17,8 +17,8 @@
 #ifndef VECTOR2_H
 #define VECTOR2_H
 
-#include <VmUtil.h>
-#include <Tuple2.h>
+#include "VmUtil.h"
+#include "Tuple2.h"
 
 VM_BEGIN_NS
 
@@ -75,7 +75,7 @@ public:
       * @param  v1 the other vector
       */
     T dot(const Vector2& v1) const {
-        return x*v1.x + y*v1.y;
+        return this->x*v1.x + this->y*v1.y;
     }
 
     /**
@@ -83,7 +83,7 @@ public:
       * @return the squared length of this vector
       */
     T lengthSquared() const {
-        return x*x + y*y;
+        return this->x*this->x + this->y*this->y;
     }
 
     /**
@@ -101,8 +101,8 @@ public:
         T d = length();
 
         // zero-div may occur.
-        x /= d;
-        y /= d;
+        this->x /= d;
+        this->y /= d;
     }
 
     /**
@@ -110,7 +110,7 @@ public:
       * @param v1 the un-normalized vector
       */
     void normalize(const Vector2& v1) {
-        set(v1);
+        Tuple2<T>::set(v1);
         normalize();
     }
 
@@ -123,7 +123,7 @@ public:
       */
     T angle(const Vector2& v1) const {
         // stabler than acos
-        return VmUtil<T>::abs(VmUtil<T>::atan2(x*v1.y - y*v1.x , dot(v1)));
+        return VmUtil<T>::abs(VmUtil<T>::atan2(this->x*v1.y - this->y*v1.x , dot(v1)));
     }
 
     // copy constructor and operator = is made by complier
@@ -154,7 +154,7 @@ VM_VECMATH_NS::Vector2<T> operator*(T s, const VM_VECMATH_NS::Vector2<T>& t1) {
 #ifdef VM_INCLUDE_IO
 template <class T>
 inline
-VM_IOSTREAM_STD::ostream& operator<<(VM_IOSTREAM_STD::ostream& o, const VM_VECMATH_NS::Vector2<T>& t1) {
+std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::Vector2<T>& t1) {
     return operator<<(o, (const VM_VECMATH_NS::Tuple2<T>&)t1);
 }
 #endif

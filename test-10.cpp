@@ -14,7 +14,7 @@
    makes no representations about the suitability of this software for any
    purpose.  It is provided "AS IS" with NO WARRANTY.
 */
-#include <assert.h>
+#include <cassert>
 
 #include "TexCoord2.h"
 #include "Color3.h"

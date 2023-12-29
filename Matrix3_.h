@@ -17,9 +17,9 @@
 #ifndef MATRIX3__H
 #define MATRIX3__H
 
-#include <VmUtil.h>
-#include <Point3.h>
-#include <Vector3.h>
+#include "VmUtil.h"
+#include "Point3.h"
+#include "Vector3.h"
 
 VM_BEGIN_NS
 
@@ -679,7 +679,7 @@ public:
     * @return the String representation
     */
 #ifdef VM_INCLUDE_TOSTRING
-VM_STRING_STD::string toString() const;
+std::string toString() const;
 #endif
 
 protected:
@@ -783,7 +783,7 @@ VM_END_NS
 
 #ifdef VM_INCLUDE_IO
 template <class T>
-VM_IOSTREAM_STD::ostream& operator<<(VM_IOSTREAM_STD::ostream& o, const VM_VECMATH_NS::Matrix3<T>& t1);
+std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::Matrix3<T>& t1);
 #endif
 
 VM_BEGIN_NS

@@ -17,9 +17,9 @@
 #ifndef QUAT4__H
 #define QUAT4__H
 
-#include <VmUtil.h>
-#include <Tuple4.h>
-#include <Matrix4_.h>
+#include "VmUtil.h"
+#include "Tuple4.h"
+#include "Matrix4_.h"
 
 VM_BEGIN_NS
 
@@ -68,24 +68,6 @@ public:
       */
     Quat4(const Tuple4<T>& t1): Tuple4<T>(t1) { }
 
-#if 0
-    /**
-     * Constructs and initializes a Quat4 from the specified Quat4f.
-     * @param q1 the Quat4f containing the initialization x y z w data
-     */
-    Quat4(Quat4f q1) {
-	super(q1);
-    }
-
-    /**
-      * Constructs and initializes a Quat4 from the specified Tuple4f.
-      * @param t1 the Tuple4f containing the initialization x y z w data
-      */
-    Quat4(Tuple4f t1) {
-	super(t1);
-    }
-#endif
-
     /**
      * Constructs and initializes a Quat4 to (0,0,0,0).
      */
@@ -118,10 +100,10 @@ public:
      * @param q1 the source vector
      */
     void conjugate(const Quat4& q1) {
-        x = -q1.x;
-        y = -q1.y;
-        z = -q1.z;
-        w = q1.w;
+        this->x = -q1.x;
+        this->y = -q1.y;
+        this->z = -q1.z;
+        this->w = q1.w;
     }
 
     /**
@@ -129,9 +111,9 @@ public:
      *  in place.
      */
     void conjugate() {
-        x = -x;
-        y = -y;
-        z = -z;
+        this->x = -this->x;
+        this->y = -this->y;
+        this->z = -this->z;
     }
 
     /**
@@ -170,7 +152,7 @@ public:
 
 protected:
     T norm() const {
-        return x*x + y*y + z*z + w*w;
+        return this->x*this->x +this-> y*this->y + this->z*this->z + this->w*this->w;
     }
     void setFromMat(T m00, T m01, T m02,
 		       T m10, T m11, T m12,
@@ -184,10 +166,10 @@ public:
     void inverse(const Quat4& q1) {
         T n = q1.norm();
         // zero-div may occur.
-        x = -q1.x/n;
-        y = -q1.y/n;
-        z = -q1.z/n;
-        w = q1.w/n;
+        this->x = -q1.x/n;
+        this->y = -q1.y/n;
+        this->z = -q1.z/n;
+        this->w = q1.w/n;
     }
 
     /**
@@ -196,10 +178,10 @@ public:
     void inverse() {
         T n = norm();
         // zero-div may occur.
-        x = -x/n;
-        y = -y/n;
-        z = -z/n;
-        w /= n;
+        this->x = -this->x/n;
+        this->y = -this->y/n;
+        this->z = -this->z/n;
+        this->w /= n;
     }
 
     /**
@@ -210,10 +192,10 @@ public:
     void normalize(const Quat4& q1) {
         T n = VmUtil<T>::sqrt(q1.norm());
         // zero-div may occur.
-        x = q1.x/n;
-        y = q1.y/n;
-        z = q1.z/n;
-        w = q1.w/n;
+        this->x = q1.x/n;
+        this->y = q1.y/n;
+        this->z = q1.z/n;
+        this->w = q1.w/n;
     }
 
     /**
@@ -222,10 +204,10 @@ public:
     void normalize() {
         T n = VmUtil<T>::sqrt(norm());
         // zero-div may occur.
-        x /= n;
-        y /= n;
-        z /= n;
-        w /= n;
+        this->x /= n;
+        this->y /= n;
+        this->z /= n;
+        this->w /= n;
     }
 
 #if 0
@@ -324,7 +306,7 @@ VM_END_NS
 
 #ifdef VM_INCLUDE_IO
 template <class T>
-VM_IOSTREAM_STD::ostream& operator<<(VM_IOSTREAM_STD::ostream& o, const VM_VECMATH_NS::Quat4<T>& q1);
+std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::Quat4<T>& q1);
 #endif
 
 VM_BEGIN_NS

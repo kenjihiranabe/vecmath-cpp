@@ -17,50 +17,19 @@
 #ifndef VMUTIL_H
 #define VMUTIL_H
 
-#include <vm_conf.h>
-
-#ifdef VM_STD_C_HEADERS
-#  include <cstddef>
-#  include <cstdlib>
-#  include <cassert>
-#  include <cmath>
-#else
-#  include <stddef.h>
-#  include <stdlib.h>
-#  include <assert.h>
-#  include <math.h>
-#endif
+#include "vm_conf.h"
+#include <cstddef>
+#include <cstdlib>
+#include <cassert>
+#include <cmath>
 
 #ifdef VM_INCLUDE_IO
-#  ifdef _MSC_VER
-#    ifdef VM_USE_OLDIOSTREAM
-#      include <iostream.h>
-#    else
-#      include <iostream>
-#    endif
-#  else
-#    include <iostream.h>
-#  endif
-#  ifdef VM_INCLUDE_TOSTRING
-#     include <string>
-#       ifdef VM_USE_STRINGSTREAM
-#         include <stringstream>
-#         define VM_TOSTRING VM_STRING_STD::stringstream s; s << *this; return s.str();
-#       else
-#         ifdef _MSC_VER
-#           ifdef VM_USE_OLDIOSTREAM
-#             include <strstrea.h>
-#             define VM_TOSTRING strstream s; s << *this << ends; VM_STRING_STD::string str = s.str(); s.rdbuf()->freeze(0); return str;
-#           else
-#             include <strstream>
-#             define VM_TOSTRING VM_IOSTREAM_STD::strstream s; s << *this << VM_IOSTREAM_STD::ends; VM_STRING_STD::string str = s.str(); s.freeze(0); return str;
-#           endif
-#         else
-#           include <strstream.h>
-#           define VM_TOSTRING strstream s; s << *this << ends; VM_STRING_STD::string str = s.str(); s.freeze(0); return str;
-#         endif
-#       endif
-#  endif
+#   include <iostream>
+#endif
+#ifdef VM_INCLUDE_TOSTRING
+#   include <string>
+#   include <sstream>
+#   define VM_TOSTRING std::stringstream s; s << *this; return s.str();
 #endif
 
 /**
@@ -96,12 +65,12 @@ struct VmUtil {
     static T min(T a, T b) { return a < b ? a : b; }
     static T min(T a, T b, T c) { return min(min(a, b), c); }
     static T min(T a, T b, T c, T d) { return min(min(a, b), min(c, d)); }
-    static T sin(T x) { return T(VM_MATH_STD::sin(x)); }
-    static T cos(T x) { return T(VM_MATH_STD::cos(x)); }
-    static T atan2(T y, T x) { return T(VM_MATH_STD::atan2(y, x)); }
-    static T acos(T x) { return T(VM_MATH_STD::acos(x)); }
-    static T sqrt(T x) { return T(VM_MATH_STD::sqrt(x)); }
-    static T pow(T x, T y) { return T(VM_MATH_STD::pow(x, y)); }
+    static T sin(T x) { return T(std::sin(x)); }
+    static T cos(T x) { return T(std::cos(x)); }
+    static T atan2(T y, T x) { return T(std::atan2(y, x)); }
+    static T acos(T x) { return T(std::acos(x)); }
+    static T sqrt(T x) { return T(std::sqrt(x)); }
+    static T pow(T x, T y) { return T(std::pow(x, y)); }
     static size_t hashCode(size_t size, const void* ptr) {
         // idea is from Bjarne Stroustrup 3rd $17.6.2.3
         size_t res = 0;

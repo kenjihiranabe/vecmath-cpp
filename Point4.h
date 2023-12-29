@@ -17,9 +17,9 @@
 #ifndef POINT4_H
 #define POINT4_H
 
-#include <VmUtil.h>
-#include <Tuple4.h>
-#include <Tuple3.h>
+#include "VmUtil.h"
+#include "Tuple4.h"
+#include "Tuple3.h"
 
 VM_BEGIN_NS
 
@@ -96,10 +96,7 @@ public:
      * @since Java3D 1.2
      */
     void set3(const Tuple3<T>& t1) {
-        x = t1.x;
-        y = t1.y;
-        z = t1.z;
-        w = 1;
+        set(t1.x, t1.y, t1.z, 1);
     }
 
     /**
@@ -108,10 +105,10 @@ public:
       * @return the square of distance between this point and p1
       */
     T distanceSquared(const Point4& p1) const {
-        T dx = x - p1.x;
-        T dy = y - p1.y;
-        T dz = z - p1.z;
-        T dw = w - p1.w;
+        T dx = this->x - p1.x;
+        T dy = this->y - p1.y;
+        T dz = this->z - p1.z;
+        T dw = this->w - p1.w;
         return dx*dx + dy*dy + dz*dz + dw*dw;
     }
 
@@ -132,8 +129,8 @@ public:
       * @return L-1 distance
       */
     T distanceL1(const Point4& p1) const {
-        return VmUtil<T>::abs(x-p1.x) + VmUtil<T>::abs(y-p1.y)
-	    + VmUtil<T>::abs(z-p1.z) + VmUtil<T>::abs(w-p1.w);
+        return VmUtil<T>::abs(this->x-p1.x) + VmUtil<T>::abs(this->y-p1.y)
+	    + VmUtil<T>::abs(this->z-p1.z) + VmUtil<T>::abs(this->w-p1.w);
     }
 
     /**
@@ -143,7 +140,7 @@ public:
       * @return L-infinite distance
       */
     T distanceLinf(const Point4& p1) const {
-        return VmUtil<T>::max(VmUtil<T>::abs(x-p1.x), VmUtil<T>::abs(y-p1.y), VmUtil<T>::abs(z-p1.z), VmUtil<T>::abs(w-p1.w));
+        return VmUtil<T>::max(VmUtil<T>::abs(this->x-p1.x), VmUtil<T>::abs(this->y-p1.y), VmUtil<T>::abs(this->z-p1.z), VmUtil<T>::abs(this->w-p1.w));
     }
 
     /**
@@ -154,10 +151,10 @@ public:
       */
      void project(const Point4& p1) {
          // zero div may occur.
-         x = p1.x/p1.w;
-         y = p1.y/p1.w;
-         z = p1.z/p1.w;
-         w = 1;
+         this->x = p1.x/p1.w;
+         this->y = p1.y/p1.w;
+         this->z = p1.z/p1.w;
+         this->w = 1;
      }
 
     // copy constructor and operator = is made by complier
@@ -179,7 +176,7 @@ VM_VECMATH_NS::Point4<T> operator*(T s, const VM_VECMATH_NS::Point4<T>& t1) {
 #ifdef VM_INCLUDE_IO
 template <class T>
 inline
-VM_IOSTREAM_STD::ostream& operator<<(VM_IOSTREAM_STD::ostream& o, const VM_VECMATH_NS::Point4<T>& t1) {
+std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::Point4<T>& t1) {
     return operator<<(o, (const VM_VECMATH_NS::Tuple4<T>&)t1);
 }
 #endif

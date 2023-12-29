@@ -17,8 +17,8 @@
 #ifndef COLOR3_H
 #define COLOR3_H
 
-#include <VmUtil.h>
-#include <Tuple3.h>
+#include "VmUtil.h"
+#include "Tuple3.h"
 
 VM_BEGIN_NS
 

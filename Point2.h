@@ -17,8 +17,8 @@
 #ifndef POINT2_H
 #define POINT2_H
 
-#include <VmUtil.h>
-#include <Tuple2.h>
+#include "VmUtil.h"
+#include "Tuple2.h"
 
 VM_BEGIN_NS
 
@@ -77,8 +77,8 @@ public:
       * @param  p1 the other point
       */
     T distanceSquared(const Point2& p1) const {
-        T dx = x - p1.x;
-        T dy = y - p1.y;
+        T dx = this->x - p1.x;
+        T dy = this->y - p1.y;
         return dx*dx + dy*dy;
     }
 
@@ -96,7 +96,7 @@ public:
       * @param p1 the other point
       */
     T distanceL1(const Point2& p1) const {
-        return VmUtil<T>::abs(x-p1.x) + VmUtil<T>::abs(y-p1.y);
+        return VmUtil<T>::abs(this->x-p1.x) + VmUtil<T>::abs(this->y-p1.y);
     }
 
     /**
@@ -105,7 +105,7 @@ public:
       * @param p1 the other point
       */
     T distanceLinf(const Point2& p1) const {
-        return VmUtil<T>::max(VmUtil<T>::abs(x-p1.x), VmUtil<T>::abs(y-p1.y));
+        return VmUtil<T>::max(VmUtil<T>::abs(this->x-p1.x), VmUtil<T>::abs(this->y-p1.y));
     }
 
     // copy constructor and operator = is made by complier
@@ -121,7 +121,7 @@ VM_END_NS
 #ifdef VM_INCLUDE_IO
 template <class T>
 inline
-VM_IOSTREAM_STD::ostream& operator<<(VM_IOSTREAM_STD::ostream& o, const VM_VECMATH_NS::Point2<T>& t1) {
+std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::Point2<T>& t1) {
     return operator<<(o, (const VM_VECMATH_NS::Tuple2<T>&)t1);
 }
 #endif

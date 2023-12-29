@@ -2,7 +2,7 @@ HISTOR OF CHANGES:
 
 * 1.2-1.5
 
-** Matrix[34].h use VM_IOSTREAM_STD::endl instead of endl in toString() methods.
+** Matrix[34].h use std::endl instead of endl in toString() methods.
   (Thanks > "SyrusM ." <syrusm@hotmail.com>)
 
 * 1.2-1.4

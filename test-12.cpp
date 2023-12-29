@@ -20,7 +20,7 @@
 
 
 
-#include <vecmath.h>
+#include "vecmath.h"
 
 #ifdef VM_INCLUDE_NAMESPACE
 using namespace kh_vecmath;

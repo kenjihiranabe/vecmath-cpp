@@ -17,9 +17,9 @@
 #ifndef VECTOR4_H
 #define VECTOR4_H
 
-#include <VmUtil.h>
-#include <Tuple4.h>
-#include <Tuple3.h>
+#include "VmUtil.h"
+#include "Tuple4.h"
+#include "Tuple3.h"
 
 VM_BEGIN_NS
 
@@ -97,10 +97,7 @@ public:
      * @since Java3D 1.2
      */
     void set3(const Tuple3<T>& t1) {
-        x = t1.x;
-        y = t1.y;
-        z = t1.z;
-        w = 0;
+      set(t1.x, t1.y, t1.z, 0);
     }
 
 
@@ -110,7 +107,7 @@ public:
       * @return the squared length of this vector
       */
     T lengthSquared() const {
-        return x*x + y*y + z*z + w*w;
+        return this->x*this->x + this->y*this->y + this->z*this->z + this->w*this->w;
     }
 
     /**
@@ -127,7 +124,7 @@ public:
      * @return the dot product of this vector and vector v1
      */
     T dot(const Vector4& v1) const {
-        return x*v1.x + y*v1.y + z*v1.z + w*v1.w;
+        return this->x*v1.x + this->y*v1.y + this->z*v1.z + this->w*v1.w;
     }
 
     /**
@@ -146,10 +143,10 @@ public:
         T d = length();
 
         // zero-div may occur.
-        x /= d;
-        y /= d;
-        z /= d;
-        w /= d;
+        this->x /= d;
+        this->y /= d;
+        this->z /= d;
+        this->w /= d;
     }
 
     /**
@@ -188,7 +185,7 @@ VM_VECMATH_NS::Vector4<T> operator*(T s, const VM_VECMATH_NS::Vector4<T>& t1) {
 #ifdef VM_INCLUDE_IO
 template <class T>
 inline
-VM_IOSTREAM_STD::ostream& operator<<(VM_IOSTREAM_STD::ostream& o, const VM_VECMATH_NS::Vector4<T>& t1) {
+std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::Vector4<T>& t1) {
     return operator<<(o, (const VM_VECMATH_NS::Tuple4<T>&)t1);
 }
 #endif

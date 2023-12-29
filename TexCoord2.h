@@ -17,8 +17,8 @@
 #ifndef TEXCOORD2_H
 #define TEXCOORD2_H
 
-#include <VmUtil.h>
-#include <Tuple2.h>
+#include "VmUtil.h"
+#include "Tuple2.h"
 
 VM_BEGIN_NS
 

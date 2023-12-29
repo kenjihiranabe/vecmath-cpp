@@ -17,10 +17,10 @@
 #ifndef MATRIX3_H
 #define MATRIX3_H
 
-#include <VmUtil.h>
-#include <Matrix3_.h>
-#include <AxisAngle4_.h>
-#include <Quat4_.h>
+#include "VmUtil.h"
+#include "Matrix3_.h"
+#include "AxisAngle4_.h"
+#include "Quat4_.h"
 
 VM_BEGIN_NS
 
@@ -834,7 +834,7 @@ void Matrix3<T>::setFromAxisAngle(T x, T y, T z, T angle) {
 
 #ifdef VM_INCLUDE_TOSTRING
 template <class T>
-VM_STRING_STD::string Matrix3<T>::toString() const {
+std::string Matrix3<T>::toString() const {
     VM_TOSTRING
 }
 #endif /* VM_INCLUDE_TOSTRING */
@@ -843,10 +843,10 @@ VM_END_NS
 
 #ifdef VM_INCLUDE_IO
 template <class T>
-VM_IOSTREAM_STD::ostream& operator<<(VM_IOSTREAM_STD::ostream& o, const VM_VECMATH_NS::Matrix3<T>& t1) {
+std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::Matrix3<T>& t1) {
     return  o << 
-        "[ ["<<t1.m00<<","<<t1.m01<<","<<t1.m02<<"]" << VM_IOSTREAM_STD::endl <<
-        "  ["<<t1.m10<<","<<t1.m11<<","<<t1.m12<<"]" << VM_IOSTREAM_STD::endl <<
+        "[ ["<<t1.m00<<","<<t1.m01<<","<<t1.m02<<"]" << std::endl <<
+        "  ["<<t1.m10<<","<<t1.m11<<","<<t1.m12<<"]" << std::endl <<
         "  ["<<t1.m20<<","<<t1.m21<<","<<t1.m22<<"] ]";
 }
 #endif /* VM_INCLUDE_IO */

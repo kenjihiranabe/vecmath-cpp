@@ -15,8 +15,8 @@
    purpose.  It is provided "AS IS" with NO WARRANTY.
 */
 
-#include <vecmath.h>
-#include <iostream>
+#include "vecmath.h"
+#include "iostream>
 
 using namespace kh_vecmath;
 

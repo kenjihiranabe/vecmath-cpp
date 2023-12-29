@@ -17,7 +17,7 @@
 #ifndef TUPLE3_H
 #define TUPLE3_H
 
-#include <VmUtil.h>
+#include "VmUtil.h"
 
 VM_BEGIN_NS
 
@@ -418,7 +418,7 @@ public:
       * @return the String representation
       */
 #ifdef VM_INCLUDE_TOSTRING
-    VM_STRING_STD::string toString() const {
+    std::string toString() const {
         VM_TOSTRING
     }
 #endif
@@ -495,7 +495,7 @@ VM_END_NS
 
 #ifdef VM_INCLUDE_IO
 template <class T>
-VM_IOSTREAM_STD::ostream& operator<<(VM_IOSTREAM_STD::ostream& o, const VM_VECMATH_NS::Tuple3<T>& t1) {
+std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::Tuple3<T>& t1) {
     return o << "(" << t1.x << "," << t1.y << "," << t1.z << ")";
 }
 #endif

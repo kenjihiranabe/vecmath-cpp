@@ -17,8 +17,8 @@
 #ifndef AXISANGLE4__H
 #define AXISANGLE4__H
 
-#include <VmUtil.h>
-#include <Matrix4_.h>
+#include "VmUtil.h"
+#include "Matrix4_.h"
 
 VM_BEGIN_NS
 
@@ -283,7 +283,7 @@ public:
       * @return the String representation
       */
 #ifdef VM_INCLUDE_TOSTRING
-VM_STRING_STD::string toString() const;
+std::string toString() const;
 #endif
 
     // copy constructor and operator = is made by complier
@@ -298,7 +298,7 @@ VM_END_NS
 
 #ifdef VM_INCLUDE_IO
 template <class T>
-VM_IOSTREAM_STD::ostream& operator<<(VM_IOSTREAM_STD::ostream& o, const VM_VECMATH_NS::AxisAngle4<T>& t1);
+std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::AxisAngle4<T>& t1);
 #endif
 
 VM_BEGIN_NS

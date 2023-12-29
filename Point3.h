@@ -17,9 +17,9 @@
 #ifndef POINT3_H
 #define POINT3_H
 
-#include <VmUtil.h>
-#include <Tuple3.h>
-#include <Point4.h>
+#include "VmUtil.h"
+#include "Tuple3.h"
+#include "Point4.h"
 
 VM_BEGIN_NS
 
@@ -80,9 +80,9 @@ public:
       * @return the square of distance between these two points as a float
       */
     T distanceSquared(const Point3& p1) const {
-        T dx = x - p1.x;
-        T dy = y - p1.y;
-        T dz = z - p1.z;
+        T dx = this->x - p1.x;
+        T dy = this->y - p1.y;
+        T dz = this->z - p1.z;
         return dx*dx + dy*dy + dz*dz;
     }
 
@@ -101,7 +101,7 @@ public:
       * @param p1 the other point
       */
     T distanceL1(const Point3& p1) const {
-        return VmUtil<T>::abs(x-p1.x) + VmUtil<T>::abs(y-p1.y) + VmUtil<T>::abs(z-p1.z);
+        return VmUtil<T>::abs(this->x-p1.x) + VmUtil<T>::abs(this->y-p1.y) + VmUtil<T>::abs(this->z-p1.z);
     }
 
     /**
@@ -110,7 +110,7 @@ public:
       * @param p1 the other point
       */
     T distanceLinf(const Point3& p1) const {
-        return VmUtil<T>::max(VmUtil<T>::abs(x-p1.x), VmUtil<T>::abs(y-p1.y), VmUtil<T>::abs(z-p1.z));
+        return VmUtil<T>::max(VmUtil<T>::abs(this->x-p1.x), VmUtil<T>::abs(this->y-p1.y), VmUtil<T>::abs(this->z-p1.z));
     }
 
     /**
@@ -120,9 +120,9 @@ public:
      */
     void project(const Point4<T>& p1) {
         // zero div may occur.
-        x = p1.x/p1.w;
-        y = p1.y/p1.w;
-        z = p1.z/p1.w;
+        this->x = p1.x/p1.w;
+        this->y = p1.y/p1.w;
+        this->z = p1.z/p1.w;
     }
 
     // copy constructor and operator = is made by complier
@@ -144,7 +144,7 @@ VM_VECMATH_NS::Point3<T> operator*(T s, const VM_VECMATH_NS::Point3<T>& t1) {
 #ifdef VM_INCLUDE_IO
 template <class T>
 inline
-VM_IOSTREAM_STD::ostream& operator<<(VM_IOSTREAM_STD::ostream& o, const VM_VECMATH_NS::Point3<T>& t1) {
+std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::Point3<T>& t1) {
     return operator<<(o, (const VM_VECMATH_NS::Tuple3<T>&)t1);
 }
 #endif

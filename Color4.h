@@ -17,8 +17,8 @@
 #ifndef COLOR4_H
 #define COLOR4_H
 
-#include <VmUtil.h>
-#include <Tuple4.h>
+#include "VmUtil.h"
+#include "Tuple4.h"
 
 VM_BEGIN_NS
 

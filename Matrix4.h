@@ -17,11 +17,11 @@
 #ifndef MATRIX4_H
 #define MATRIX4_H
 
-#include <VmUtil.h>
-#include <Quat4.h>      // not very good. use temlate export later
-#include <AxisAngle4.h>
-#include <Matrix4_.h>
-#include <Matrix3.h>   // not very good. use template export later
+#include "VmUtil.h"
+#include "Quat4.h"     // not very good. use temlate export later
+#include "AxisAngle4.h"
+#include "Matrix4_.h"
+#include "Matrix3.h"   // not very good. use template export later
 
 VM_BEGIN_NS
 
@@ -1205,7 +1205,7 @@ void Matrix4<T>::setFromAxisAngle(T x, T y, T z, T angle) {
 
 #ifdef VM_INCLUDE_TOSTRING
 template <class T>
-VM_STRING_STD::string Matrix4<T>::toString() const {
+std::string Matrix4<T>::toString() const {
     VM_TOSTRING
 }
 #endif /* VM_INCLUDE_TOSTRING */
@@ -1214,11 +1214,11 @@ VM_END_NS
 
 #ifdef VM_INCLUDE_IO
 template <class T>
-VM_IOSTREAM_STD::ostream& operator<<(VM_IOSTREAM_STD::ostream& o, const VM_VECMATH_NS::Matrix4<T>& t1) {
+std::ostream& operator<<(std::ostream& o, const VM_VECMATH_NS::Matrix4<T>& t1) {
     return  o << 
-    "[ ["<<t1.m00<<","<<t1.m01<<","<<t1.m02<<","<<t1.m03<<"]" << VM_IOSTREAM_STD::endl <<
-    "  ["<<t1.m10<<","<<t1.m11<<","<<t1.m12<<","<<t1.m13<<"]" << VM_IOSTREAM_STD::endl <<
-    "  ["<<t1.m20<<","<<t1.m21<<","<<t1.m22<<","<<t1.m23<<"]" << VM_IOSTREAM_STD::endl <<
+    "[ ["<<t1.m00<<","<<t1.m01<<","<<t1.m02<<","<<t1.m03<<"]" << std::endl <<
+    "  ["<<t1.m10<<","<<t1.m11<<","<<t1.m12<<","<<t1.m13<<"]" << std::endl <<
+    "  ["<<t1.m20<<","<<t1.m21<<","<<t1.m22<<","<<t1.m23<<"]" << std::endl <<
     "  ["<<t1.m30<<","<<t1.m31<<","<<t1.m32<<","<<t1.m33<<"]""] ]";
 }
 #endif
