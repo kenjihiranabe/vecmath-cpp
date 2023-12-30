@@ -4,22 +4,25 @@ English ｜ [日本語](README-ja.md)
 This is a C++ port of Java3D vecmath(vector/matrix mathmatics), implented as C++ template header files.
 Often used in 3D graphics projects, math projects, dynamics or physics projects.
 
-## Classes
+## Class Diagram and Documentation
 
 Here's a class diagram of all the classes included.
 
 ![image](https://github.com/kenjihiranabe/vecmath-cpp/assets/1093925/7a562372-bbc6-43d4-ac7d-6ea66b7da3e4)
 
+The detail of the math is explained in [vecmath.pdf](vecmath.pdf). And [Qiita article, Math of Quaternion](https://qiita.com/kenjihiranabe/items/945232fbde58fab45681) has a detailed explanation of Quaternions.
+
+The above articles are in Japanse only. Sorry.
 
 ## Rationals
 
-I thought a parallel C++ version of the Java package can make a FAST vector/matrix library by the original Java3D specification's unique natures.
+I thought a parallel C++ version of the Java vecmath package can make a FAST vector/matrix library by the original Java3D specification's unique natures.
 Java3D designers decided to;
 
-1. Make all member variables 'public'.
-2. Make all methods(member functions) 'final' (non-virtual)
-3. Avoid using arrays in Matrices and Vectors.
-4. Distiguish Points from Vectors as different classes.
+1. Make all member variables `public`.
+2. Make all methods(member functions) `final` (non-virtual)
+3. Avoid using arrays in `Matrices` and `Vector`s.
+4. Distiguish `Point`s from `Vector`s as different classes.
 
 Design decision (1)-(3) are from Java's inherent speed problem. 
 
@@ -34,7 +37,7 @@ But I found it not so bad after I tried implementation, and it makes this librar
 
 Luckly, these four points makes this parallel C++ library very unique. Highest priority to time efficiency. i.e. no 'virtual' calls, no 'new's, extensively inlined templates, public members, and para-phrazed calculation(no loops and array indexing in methods).
 
-For example, not having an array representation in Matrices, the determinant of Matrix3 is coded as;
+For example, not having an array representation in Matrices, the determinant of `Matrix3`` is coded as;
 
 ```C++
 template < class T >
@@ -48,8 +51,9 @@ T Matrix3 < T >::determinant() const {
 
 Off cource there are shortcomings in this C++ package.
 
-- Element access by index is slow.
-'operatoer[]' is not supported intensionally, because this can lead to a programming style which can cause a performance problem.
+- Element access by index could have been slow.
+
+So, `operatoer[]` is not supported intensionally, because this can lead to a programming style which can cause a performance problem.
 
 ```C++
      // a bad user program
@@ -62,26 +66,46 @@ Off cource there are shortcomings in this C++ package.
             v[i] = m(i,j)*u[j];
 ```
 
-This [] array element access syntax could have been supported in the library, but not. You should use METHODs.
+This [] array element access syntax could have been supported in the library, but not. You should use METHODs instead.
 
 ```C++
      m.transform(u, &v);   // much faster
 
 //      or
 
-     v = m*u;              // others like this style better, but this operator is not supported either for now.
+     v = m*u;              // others like this style better.
 ```
 
-which are much faster, and readable. A lot of methods are prepared so that users don't have to access elements directly.
+which are much faster, and readable. A lot of named methods and mathematical operators are prepared so that users don't have to access elements directly.
 
 ## Usage
 
+This pacakge is implemented as C++ template header files only, without .cpp files, so you don't have to build it.
 Just copy all the '*.h' files into one of your C++ project directory and add its path to the compiler's include option.
+
+To use the vecmath classes, include the `vecmath.h` header file in your code.
+Here's `hello-vecmath.cpp` example.
+
+```C++
+#include <iostream>
+#include "vecmath.h"
+
+using namespace kh_vecmath;
+
+int main(int, char**) {
+    Matrix3d m(1,2,3,4,5,6,7,8,9);
+    Vector3d v(2,3,4);
+    std::cout << m*v << std::endl;
+    return 0;
+}
+```
+
+
 Look at test.cpp files for typical usages.
 
 ## Environment
 
-Developed and tested on MacOS with GNU gcc compiler. See Makefile for the compilation options.
+Developed and tested on MacOS with GNU gcc compiler. See `Makefile` for the compiler options.
 
 ```
 gcc --version
@@ -94,13 +118,11 @@ It also worked on Windows. Please let me know if you have experienced difficulti
 
 ## Other Features
 
-All code is in *.h file. No need to compile. You can just place them and include them.
+You can control whether to include the following options by editing `Vm_conf.h`.
 
-You can control whether to include the following options by editing Vm_conf.h.
-
-- String representations of the objects. Define VM_INCLUDE_STRING.
-- Output to <ostream>. Define VM_INCLUDE_IO.
-- Whether to enclose this package in a namespace. Define VM_INCLUDE_NS. Default namespace is kh_vecmath, but you can use other names.
+- String representations of the objects. Define `VM_INCLUDE_STRING`.
+- Output to `<ostream>`. Define `VM_INCLUDE_IO`.
+- Whether to enclose this package in a namespace. Define `VM_INCLUDE_NS`. Default namespace is kh_vecmath, but you can use other names.
 
 All supports are on by default. For example, you can code like;
 
