@@ -1,3 +1,4 @@
+English ｜ [日本語](README-ja.md)
 # vecmath-cpp
 
 This is a C++ port of Java3D vecmath(vector/matrix mathmatics), implented as C++ template header files.
