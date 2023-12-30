@@ -136,7 +136,7 @@ BSD Lisence.
 
 ## 履歴
 
-オリジナルの実装は以下のサイトにあります．
+オリジナルの実装は以下のサイトにあり，多くの参照URLがあります（現在ではほとんどリンク切れのようです）．
 
 [http://objectclub.jp/download/vecmath1](http://objectclub.jp/download/vecmath1
 )
