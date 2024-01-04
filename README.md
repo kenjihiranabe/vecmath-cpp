@@ -134,7 +134,7 @@ std::cout << m;               // output to ostream.
 
 You can edit Vm_conf.h to disable them for some limited environment.
 
-## Lisence
+## License
 
 SEE [`LICNESE`](LICENSE) file in this directory.
 
