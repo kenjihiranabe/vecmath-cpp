@@ -132,7 +132,7 @@ std::cout << m;               // output to ostream.
 
 ## ライセンス
 
-BSD Lisence.
+このディレクトリの [`LICNESE`](LICENSE) を参照．
 
 ## 履歴
 
