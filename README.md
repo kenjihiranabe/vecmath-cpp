@@ -136,7 +136,7 @@ You can edit Vm_conf.h to disable them for some limited environment.
 
 ## Lisence
 
-SEE (`LICNESE`)[LICENSE] file in this directory.
+SEE [`LICNESE`](LICENSE) file in this directory.
 
 ## History
 
