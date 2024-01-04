@@ -136,7 +136,7 @@ You can edit Vm_conf.h to disable them for some limited environment.
 
 ## Lisence
 
-BSD Lisence.
+SEE (`LICNESE`)[LICENSE] file in this directory.
 
 ## History
 
